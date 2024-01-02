@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+
+    <link rel="stylesheet" href="css/style.css" />
+
+    <title>Frontend Mentor | Interactive comments section</title>
+
+    <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+    <style>
+      .attribution {
+        font-size: 15px;
+        text-align: center;
+      }
+      .attribution a {
+        color: hsl(228, 45%, 44%);
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Pull dynamic content from the data.json file -->
+    <main class="main-container">
+      <div class="container">
+        <div class="msg-container">
+          <ul class="comment-group"></ul>
+        </div>
+        <div class="input-container">
+          <div class="user-pics">
+            <img
+              src="images/avatars/image-maxblagun.png"
+              alt=""
+              id="currentImg"
+            />
+          </div>
+          <textarea
+            class="chat-box"
+            placeholder="Add a comment..."
+            id="commentInput"
+          ></textarea>
+          <a href="#" class="send-btn" id="commentBtn">send</a>
+        </div>
+      </div>
+      <div class="attribution">
+        Challenge by
+        <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
+          >Frontend Mentor</a
+        >. Coded by
+        <a href="https://codewithyembot.vercel.app">Adekojo Emmanuel Adeyemi</a
+        >.
+      </div>
+    </main>
+
+    <script src="js/sweet.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>
