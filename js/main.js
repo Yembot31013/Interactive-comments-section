@@ -405,7 +405,9 @@ function processEventHandler() {
         commentElem
       );
 
-      handleCount(scoreValue, commentIndex, null);
+      if (scoreValue >= 0) {
+        handleCount(scoreValue, commentIndex, null);
+      }
     });
   });
 
@@ -421,7 +423,9 @@ function processEventHandler() {
         commentElem
       );
 
-      handleCount(scoreValue, commentIndex, null);
+      if (scoreValue >= 0) {
+        handleCount(scoreValue, commentIndex, null);
+      }
     });
   });
 
@@ -443,7 +447,9 @@ function processEventHandler() {
         replyElem
       );
 
-      handleCount(scoreValue, commentIndex, replyIndex);
+      if (scoreValue >= 0) {
+        handleCount(scoreValue, commentIndex, replyIndex);
+      }
     });
   });
 
@@ -465,7 +471,9 @@ function processEventHandler() {
         replyElem
       );
 
-      handleCount(scoreValue, commentIndex, replyIndex);
+      if (scoreValue >= 0) {
+        handleCount(scoreValue, commentIndex, replyIndex);
+      }
     });
   });
 
@@ -595,6 +603,7 @@ function addToComment(e) {
       content: commentInput.value,
       createdAt: "now",
       score: 0,
+      initialScore: 0,
       user: {
         image: {
           png: currentUser.image.png,
@@ -619,6 +628,7 @@ function addToReply(content, replyingTo, commentIndex) {
     content: content,
     createdAt: "now",
     score: 0,
+    initialScore: 0,
     replyingTo: replyingTo,
     user: {
       image: {
@@ -668,11 +678,21 @@ function handleReplyDelete(commentIndex, replyIndex) {
 
 function handleCount(scoreValue, commentIndex, replyIndex) {
   if (replyIndex != null) {
-    jsonData.comments[commentIndex].replies[replyIndex].score = scoreValue;
-    renderData(jsonData);
+    var initialScore =
+      jsonData.comments[commentIndex].replies[replyIndex].initialScore;
+
+    if (scoreValue <= initialScore + 1 && scoreValue >= initialScore - 1) {
+      jsonData.comments[commentIndex].replies[replyIndex].score = scoreValue;
+      renderData(jsonData);
+    }
   } else {
-    jsonData.comments[commentIndex].score = scoreValue;
-    renderData(jsonData);
+    var initialScore = jsonData.comments[commentIndex].initialScore;
+
+    console.log(initialScore, scoreValue <= initialScore + 1);
+    if (scoreValue <= initialScore + 1 && scoreValue >= initialScore - 1) {
+      jsonData.comments[commentIndex].score = scoreValue;
+      renderData(jsonData);
+    }
   }
 }
 
