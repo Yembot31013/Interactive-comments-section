@@ -1,0 +1,8 @@
+{
+  "name": "interactive-comments-section",
+  "version": "1.0.0",
+  "description": "Interactive comments section",
+  "engines": {
+    "node": "24.x"
+  }
+}
